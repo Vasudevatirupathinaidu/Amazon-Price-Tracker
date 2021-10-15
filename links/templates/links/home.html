@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<header>
+  <section class="header-section">
+    <article class="controls">
+      <button class="add">Add</button>
+      <a href="{% url 'update-prices' %}"><button class="update">Update</button></a>
+    </article>
+    <article class="items-count-track">
+      <p class="items-count">Total number of items being tracked: <span>{{items_count}}</span></p>
+      <p class="discounted-items">Discounted items: <span>{{discounted_count}}</span></p>
+    </article>
+  </section>
+</header>
+
+<section class="items-container">
+  {% for item in items %}
+  <section class="item-container">
+    <article class="item-title">
+      <p>{{item.name|slice:"50"}}...</p>
+      <a href="{% url 'delete-link' item.id %}"><button class="delete">Delete</button></a>
+    </article>
+    <article class="item-info">
+      <p class="current-price">Current price ($): <span>{{item.current_price}}</span></p>
+      <p class="old-price">Old price ($): <span>{{item.old_price}}</span></p>
+      <p class="price-difference">Price difference ($): <span>{{item.price_difference}}</span></p>
+      <p class="item-link">Link: <a href="{{item.url}}" target="_blank">{{item.url}}</a></p>
+    </article>
+  </section>
+  {% endfor %}
+</section>
+
+<section class="popup-card-container hide">
+  <article class="popup-card">
+    <p class="close-icon">x</p>
+    <p class="popup-title">Add an item for tracking</p>
+    <form action="" method="POST" autocomplete="off">
+      {% csrf_token %}
+      {{form}}
+      <input type="submit" value="Save">
+    </form>
+  </article>
+</section>
+
+{% endblock content %}

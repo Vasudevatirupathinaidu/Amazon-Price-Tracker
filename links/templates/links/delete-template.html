@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<section class="delete-template-container">
+  <article class="delete-template">
+    <p class="delete-title">Are you sure you want to delete "{{object.name|slice:"50"}}"...?</p>
+    <form action="" method="POST" autocomplete="off">
+      {% csrf_token %}
+      <a href="{% url 'home' %}">Go Back</a>
+      <input type="submit" value="Confirm">
+    </form>
+  </article>
+</section>
+{% endblock content %}

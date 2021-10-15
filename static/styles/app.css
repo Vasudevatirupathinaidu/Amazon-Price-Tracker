@@ -1,0 +1,374 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: var(--font-clr);
+}
+
+/* Variable */
+:root {
+  --pri-ff: "Lato", "sans-serif";
+  --font-clr: #222222;
+  --pri-clr: #f5f5f5;
+  --nav-bgClr: #232f3e;
+  --title-clr: #f1f1f1;
+  --amazon-clr: #ff9900;
+  --btn-clr: #2f4869;
+  --box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  --high-price-clr: #ffa135;
+  --low-price-clr: #3effa5;
+}
+
+/* html, body */
+html {
+  font-family: var(--pri-ff);
+}
+
+body {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--pri-clr);
+  color: var(--font-clr);
+}
+
+/* Navbar */
+nav {
+  width: inherit;
+  height: 14vh;
+  text-align: center;
+  background-color: var(--nav-bgClr);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav h1 {
+  font-size: 1.8rem;
+  padding: 1em;
+  color: var(--title-clr);
+}
+
+nav h1 span {
+  color: var(--amazon-clr);
+}
+
+/* Home */
+header {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em auto;
+}
+
+.header-section {
+  width: 100%;
+  max-width: 780px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  margin: 0 1em;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+}
+
+section .controls {
+  padding-right: 1em;
+}
+
+section .items-count-track {
+  padding-left: 1em;
+}
+
+.add,
+.update,
+.delete {
+  font-size: 1rem;
+  padding: 0.5em 1em;
+  margin: 0.5em;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--btn-clr);
+  color: var(--title-clr);
+  transition: background-color 0.4s ease;
+  cursor: pointer;
+}
+
+
+.delete {
+  background-color: var(--pri-clr);
+  color: var(--btn-clr);
+  padding: 0.3em 0.8em;
+}
+
+.delete:hover {
+  background-color: #e0e0e0;
+}
+
+.add:hover,
+.update:hover {
+  background-color: var(--nav-bgClr);
+}
+
+.items-count,
+.discounted-items {
+  font-size: 1.1rem;
+  padding: 0.4em 0;
+  line-height: 1.8em;
+}
+
+.items-count span,
+.discounted-items span {
+  background-color: var(--amazon-clr);
+  color: var(--nav-bgClr);
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 0.3em 0.5em;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
+/* Items Container */
+
+.items-container {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2em auto;
+}
+
+.items-container .item-container:nth-child(2n) {
+  margin: 1em 0;
+}
+
+.item-container {
+  width: 100%;
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  margin: 0 1em;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+}
+
+.item-title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  background-color: var(--btn-clr);
+  border-radius: 5px;
+  color: var(--pri-clr);
+  padding: 1em 0.5em;
+}
+
+.high-price {
+  background-color: var(--high-price-clr);
+  color: var(--font-clr);
+}
+
+.low-price {
+  background-color: var(--low-price-clr);
+  color: var(--font-clr);
+}
+
+.item-info {
+  margin-top: 1em;
+  padding: 1em;
+}
+
+.item-info p:nth-child(2n) {
+  padding: 0.5em 0;
+}
+
+.item-info span {
+  font-weight: 600;
+  padding-left: 0.5em;
+}
+
+.item-link a {
+  font-weight: 500;
+  text-decoration: underline;
+  color: var(--btn-clr);
+  padding-left: 0.5em;
+}
+
+/* Add popup card */
+.popup-card-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+}
+
+.popup-card {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  height: 160px;
+  font-size: 1.1rem;
+  background-color: var(--pri-clr);
+  margin: 4em 1em;
+  padding: 1em;
+  border-radius: 5px;
+  transform: translateY(-100vh);
+  animation: popup 0.3s cubic-bezier(.4, 1.61, .69, 0.85) both;
+}
+
+@keyframes popup {
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.close-icon {
+  position: absolute;
+  top: 0.2em;
+  right: 0.6em;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.popup-title {
+  padding-bottom: 1em;
+  font-weight: 600;
+}
+
+input[type="url"] {
+  font-size: 1rem;
+  width: 100%;
+  max-width: calc(8vw + 140px);
+  height: 40px;
+  padding: 0.5em;
+  margin-left: 0.5em;
+}
+
+input[type="submit"] {
+  font-size: 0.9em;
+  margin-top: 1em;
+  padding: 0.4em 0.8em;
+  border: none;
+  background-color: var(--btn-clr);
+  border-radius: 3px;
+  color: var(--pri-clr);
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--nav-bgClr);
+}
+
+input[value="Save"] {
+  margin-left: 1em;
+}
+
+.hide {
+  display: none;
+}
+
+/* Delete template */
+.delete-template-container {
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+}
+
+.delete-template {
+  width: 100%;
+  max-width: 360px;
+  height: 160px;
+  font-size: 1.1rem;
+  background-color: var(--pri-clr);
+  margin: 4em 1em;
+  padding: 1em;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-template form {
+  margin-top: 1em;
+}
+
+.delete-template form a {
+  font-size: 0.9em;
+  margin: 1em 1em 0 0;
+  padding: 0.3em 0.8em;
+  padding-bottom: 0.4em;
+  vertical-align: baseline;
+  border: none;
+  background-color: var(--btn-clr);
+  border-radius: 3px;
+  color: var(--pri-clr);
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+
+.delete-template form a:hover {
+  background-color: var(--nav-bgClr);
+}
+
+
+@media screen and (max-width:570px) {
+  nav h1 {
+    font-size: 1.4rem;
+  }
+
+  .add,
+  .update,
+  .delete {
+    font-size: 0.8rem;
+  }
+
+  .items-count,
+  .discounted-items {
+    font-size: 0.8rem;
+    padding: 0.4em 0;
+    line-height: 1em;
+  }
+
+  .items-count span,
+  .discounted-items span {
+    font-size: 0.9rem;
+    padding: 0.2em 0.3em;
+    line-height: 1.8em;
+  }
+
+  .item-title {
+    font-size: 0.9rem;
+  }
+
+  .item-info {
+    font-size: 0.8rem;
+  }
+}
